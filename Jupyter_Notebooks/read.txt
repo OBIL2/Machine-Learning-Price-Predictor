@@ -1,1 +1,81 @@
 
+Notebook 1: Linear Regression (The Statistical Baseline)
+
+
+
+
+
+Purpose: To establish a foundational mathematical baseline and test the linear assumptions of asset depreciation.
+
+
+
+Outcome: The model fundamentally failed to converge on a meaningful pattern ($R^2$ of 0.1119).
+
+
+
+Key Insight: This phase was highly successful in proving a negative: it mathematically proved that bulldozer depreciation is non-linear and heavily compounded by categorical features (like Brand and Cab Enclosure) that simple linear coefficients cannot accurately capture.
+
+Notebook 2: Random Forest (The Bagging Ensemble)
+
+
+
+
+
+Purpose: To introduce decision tree logic and combat the non-linearity discovered in Phase 1.
+
+
+
+Outcome: Achieved an excellent $R^2$ of 0.9110 by building hundreds of independent decision trees and averaging their predictions.
+
+
+
+Key Insight: While highly accurate, the Random Forest model was computationally heavy. Training times were exceptionally long, making it a strong analytical tool but slightly too heavy for a real-time, low-latency web deployment.
+
+Notebook 3: XGBoost (The Accuracy Champion)
+
+
+
+
+
+Purpose: To apply "Boosting" logic, where each subsequent tree focuses exclusively on correcting the errors of the previous tree.
+
+
+
+Outcome: The undisputed champion of pure predictive accuracy ($R^2$ of 0.9179).
+
+
+
+Key Insight: XGBoost aggressively minimized the RMSE (0.1989), proving that sequential error correction is the most effective way to handle complex, multi-dimensional tabular data. However, it requires significant memory to execute.
+
+Notebook 4: K-Nearest Neighbors (The Distance Metric)
+
+
+
+
+
+Purpose: To test if machinery could be priced simply by looking at the historical prices of its "closest neighbors" (machines with similar age, hours, and size).
+
+
+
+Outcome: Performed moderately well ($R^2$ of 0.7595) but fell far short of the tree ensembles.
+
+
+
+Key Insight: KNN suffered heavily from the "Curse of Dimensionality." Because the dataset has over 60 columns, calculating the mathematical distance between hundreds of thousands of data points became inefficient, and the model struggled to weigh the importance of categorical features.
+
+Notebook 5: LightGBM (The Production Deployment)
+
+
+
+
+
+Purpose: To find a model that balances enterprise-level accuracy with web-deployment speed.
+
+
+
+Outcome: The ultimate deployment choice ($R^2$ of 0.9085).
+
+
+
+Key Insight: LightGBM retained over 99% of XGBoost's accuracy but executed in a fraction of the time. By utilizing "Histogram Binning" to group continuous features and "Leaf-Wise Tree Growth" instead of level-wise growth, it reduced latency to under 50 milliseconds, making it the perfect engine for the live Streamlit dashboard.
+
