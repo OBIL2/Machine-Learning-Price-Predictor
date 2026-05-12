@@ -9,9 +9,12 @@ Group 2
 HOW TO RUN:
     python -m streamlit run app.py
 
+HOW TO IMPORT LIBRARIES:
+    python -m pip install streamlit pandas numpy matplotlib scikit-learn lightgbm xgboost joblib
+
 FOLDER STRUCTURE:
     app.py
-    lgbm_bulldozer_model.pkl   <- download from Colab
+    lgbm_bulldozer_model.pkl
     TrainAndValid.csv          <- place in same folder
 =========================================================
 """
@@ -27,7 +30,7 @@ import time
 # 1. PAGE CONFIGURATION
 # ==========================================
 st.set_page_config(
-    page_title="Bulldozer AI | Group 2",
+    page_title="Bulldozer Price Predictor AI | Group 2",
     layout="wide",
     page_icon=None,
     initial_sidebar_state="expanded"
